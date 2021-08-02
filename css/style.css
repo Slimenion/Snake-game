@@ -3,6 +3,18 @@ body {
     padding: 0;
 }
 
+.info {
+    display: flex;
+}
+
+#difficult {
+    width: 304px;
+}
+
+#info {
+    width: 304px;
+}
+
 .snakeGame {
     height: 608px;
     width: 608px;

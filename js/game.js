@@ -12,6 +12,11 @@ const box = 32;
 var score = 0;
 
 var maxScore;
+
+if (localStorage.getItem("difficult") == null) {
+    localStorage.setItem("difficult", 100);
+}
+
 if (localStorage.getItem("maxScore") == null) {
     localStorage.setItem("maxScore", 0);
 } else {
@@ -36,7 +41,25 @@ document.getElementById("leftArrow").addEventListener("click", directionLeft);
 document.getElementById("downArrow").addEventListener("click", directionDown);
 document.getElementById("rightArrow").addEventListener("click", directionRight);
 
+document.getElementById("info").addEventListener("click", info);
+document.getElementById("difficult").addEventListener("click", changeDifficult);
+
 var dir;
+
+function changeDifficult() {
+    var difficult = prompt(`Изначальный параметр 100.
+    Чем больше цифра, тем медленнее игра
+    Рекомендованнуемые значения от 100 до 300`);
+    localStorage.setItem("difficult", difficult);
+}
+
+function info() {
+    alert(`Игра змейка
+    на компьютере можно использовать стрелочки
+    на телефоне используйте кнопки
+    Created by Bobrgames 2021
+    Все права не защищены.`);
+}
 
 function eatTail(head, arr) {
     for (var i = 0; i < arr.length; i++) {
@@ -150,4 +173,4 @@ function drawGame() {
     snake.unshift(newPosHead);
 }
 
-var game = setInterval(drawGame, 100);
+var game = setInterval(drawGame, localStorage.getItem("difficult"));
