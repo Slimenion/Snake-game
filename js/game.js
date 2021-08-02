@@ -7,7 +7,7 @@ ground.src = "img/backGround.png";
 const foodImg = new Image();
 foodImg.src = "img/apple.png";
 
-var box = 32;
+const box = 32;
 
 var score = 0;
 
@@ -94,6 +94,9 @@ function drawGame() {
     ctx.font = "50px Arial";
     ctx.fillText(score, box * 2.5, box * 1.7);
 
+    if (localStorage.getItem("maxScore") == null) {
+        localStorage.setItem("maxScore", 0);
+    }
     ctx.fillStyle = "white";
     ctx.font = "50px Arial";
     ctx.fillText("Max score: " + maxScore, box * 9, box * 1.7);
