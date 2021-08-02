@@ -54,7 +54,22 @@ function drawGame() {
     ctx.font = "50px Arial";
     ctx.fillText(score, box * 2.5, box * 1.7);
 
-    var snakeX = 
+    var snakeX = snake[0].x;
+    var snakeY = snake[0].y;
+
+    snake.pop();
+
+    if (dir == "left") snakeX -= box;
+    if (dir == "right") snakeX += box;
+    if (dir == "up") snakeY -= box;
+    if (dir == "down") snakeY += box;
+
+    var newPosHead = {
+        x: snakeX,
+        y: snakeY,
+    };
+
+    snake.unshift(newPosHead);
 }
 
 var game = setInterval(drawGame, 100);
