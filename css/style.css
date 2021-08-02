@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .snakeGame {
     height: 608px;
     width: 608px;

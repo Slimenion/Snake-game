@@ -22,7 +22,12 @@ snake[0] = {
     y: 10 * box,
 };
 
-document.addEventListener("keydown", direction);
+document.addEventListener("keydown", directionKeyboard);
+
+document.getElementById("upArrow").addEventListener("click", directionUp);
+document.getElementById("leftArrow").addEventListener("click", directionLeft);
+document.getElementById("downArrow").addEventListener("click", directionDown);
+document.getElementById("rightArrow").addEventListener("click", directionRight);
 
 var dir;
 
@@ -31,14 +36,30 @@ function eatTail(head, arr) {
         if (head.x == arr[i].x && head.y == arr[i].y) {
             clearInterval(game);
             alert(
-                `Вы проиграли
-            Вы набрали: ` + score
+                `Вы проиграли съев часть себя
+            Вы набрали: ` +
+                    score +
+                    `
+            Чтобы попробовать снова обновите страницу`
             );
         }
     }
 }
 
-function direction(event) {
+function directionUp() {
+    dir = "up";
+}
+function directionLeft() {
+    dir = "left";
+}
+function directionDown() {
+    dir = "down";
+}
+function directionRight() {
+    dir = "right";
+}
+
+function directionKeyboard(event) {
     if (event.keyCode == 37 && dir != "right") {
         dir = "left";
     }
@@ -87,8 +108,11 @@ function drawGame() {
     ) {
         clearInterval(game);
         alert(
-            `Вы проиграли
-        Вы набрали: ` + score
+            `Вы проиграли вовремя не увернувшись от стены
+        Вы набрали: ` +
+                score +
+                `
+        Чтобы попробовать снова обновите страницу`
         );
     }
 
