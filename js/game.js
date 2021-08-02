@@ -77,16 +77,16 @@ function eatTail(head, arr) {
 }
 
 function directionUp() {
-    dir = "up";
+    if (dir != "down") dir = "up";
 }
 function directionLeft() {
-    dir = "left";
+    if (dir != "right") dir = "left";
 }
 function directionDown() {
-    dir = "down";
+    if (dir != "up") dir = "down";
 }
 function directionRight() {
-    dir = "right";
+    if (dir != "left") dir = "right";
 }
 
 function directionKeyboard(event) {
