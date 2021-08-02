@@ -30,6 +30,10 @@ function eatTail(head, arr) {
     for (var i = 0; i < arr.length; i++) {
         if (head.x == arr[i].x && head.y == arr[i].y) {
             clearInterval(game);
+            alert(
+                `Вы проиграли
+            Вы набрали: ` + score
+            );
         }
     }
 }
@@ -80,8 +84,13 @@ function drawGame() {
         snakeX > box * 17 ||
         snakeY < 3 * box ||
         snakeY > box * 17
-    )
+    ) {
         clearInterval(game);
+        alert(
+            `Вы проиграли
+        Вы набрали: ` + score
+        );
+    }
 
     if (dir == "left") snakeX -= box;
     if (dir == "right") snakeX += box;
