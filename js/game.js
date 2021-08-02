@@ -11,6 +11,13 @@ var box = 32;
 
 var score = 0;
 
+var maxScore;
+if (localStorage.getItem("maxScore") == null) {
+    localStorage.setItem("maxScore", 0);
+} else {
+    maxScore = localStorage.getItem("maxScore");
+}
+
 var food = {
     x: Math.floor(Math.random() * 17 + 1) * box,
     y: Math.floor(Math.random() * 15 + 3) * box,
@@ -87,6 +94,10 @@ function drawGame() {
     ctx.font = "50px Arial";
     ctx.fillText(score, box * 2.5, box * 1.7);
 
+    ctx.fillStyle = "white";
+    ctx.font = "50px Arial";
+    ctx.fillText("Max score: " + maxScore, box * 9, box * 1.7);
+
     var snakeX = snake[0].x;
     var snakeY = snake[0].y;
 
@@ -125,6 +136,11 @@ function drawGame() {
         x: snakeX,
         y: snakeY,
     };
+
+    if (score > maxScore) {
+        maxScore = score;
+        localStorage.setItem("maxScore", score);
+    }
 
     eatTail(newPosHead, snake);
 
