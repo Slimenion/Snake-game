@@ -26,6 +26,14 @@ document.addEventListener("keydown", direction);
 
 var dir;
 
+function eatTail(head, arr) {
+    for (var i = 0; i < arr.length; i++) {
+        if (head.x == arr[i].x && head.y == arr[i].y) {
+            clearInterval(game);
+        }
+    }
+}
+
 function direction(event) {
     if (event.keyCode == 37 && dir != "right") {
         dir = "left";
@@ -46,7 +54,7 @@ function drawGame() {
     ctx.drawImage(foodImg, food.x, food.y);
 
     for (var i = 0; i < snake.length; i++) {
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = i == 0 ? "blue" : "green";
         ctx.fillRect(snake[i].x, snake[i].y, box, box);
     }
 
@@ -67,6 +75,14 @@ function drawGame() {
         snake.pop();
     }
 
+    if (
+        snakeX < box ||
+        snakeX > box * 17 ||
+        snakeY < 3 * box ||
+        snakeY > box * 17
+    )
+        clearInterval(game);
+
     if (dir == "left") snakeX -= box;
     if (dir == "right") snakeX += box;
     if (dir == "up") snakeY -= box;
@@ -76,6 +92,8 @@ function drawGame() {
         x: snakeX,
         y: snakeY,
     };
+
+    eatTail(newPosHead, snake);
 
     snake.unshift(newPosHead);
 }
