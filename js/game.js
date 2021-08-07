@@ -11,16 +11,18 @@ const box = 32;
 
 var score = 0;
 
-var maxScore;
+var BobrGamesSnakeGameMaxScore;
 
 if (localStorage.getItem("difficult") == null) {
     localStorage.setItem("difficult", 100);
 }
 
-if (localStorage.getItem("maxScore") == null) {
-    localStorage.setItem("maxScore", 0);
+if (localStorage.getItem("BobrGamesSnakeGameMaxScore") == null) {
+    localStorage.setItem("BobrGamesSnakeGameMaxScore", 0);
 } else {
-    maxScore = localStorage.getItem("maxScore");
+    BobrGamesSnakeGameMaxScore = localStorage.getItem(
+        "BobrGamesSnakeGameMaxScore"
+    );
 }
 
 var food = {
@@ -117,12 +119,16 @@ function drawGame() {
     ctx.font = "50px Arial";
     ctx.fillText(score, box * 2.5, box * 1.7);
 
-    if (localStorage.getItem("maxScore") == null) {
-        localStorage.setItem("maxScore", 0);
+    if (localStorage.getItem("BobrGamesSnakeGameMaxScore") == null) {
+        localStorage.setItem("BobrGamesSnakeGameMaxScore", 0);
     }
     ctx.fillStyle = "white";
     ctx.font = "50px Arial";
-    ctx.fillText("Max score: " + maxScore, box * 9, box * 1.7);
+    ctx.fillText(
+        "Max score: " + BobrGamesSnakeGameMaxScore,
+        box * 9,
+        box * 1.7
+    );
 
     var snakeX = snake[0].x;
     var snakeY = snake[0].y;
@@ -163,9 +169,9 @@ function drawGame() {
         y: snakeY,
     };
 
-    if (score > maxScore) {
-        maxScore = score;
-        localStorage.setItem("maxScore", score);
+    if (score > BobrGamesSnakeGameMaxScore) {
+        BobrGamesSnakeGameMaxScore = score;
+        localStorage.setItem("BobrGamesSnakeGameMaxScore", score);
     }
 
     eatTail(newPosHead, snake);
