@@ -1,7 +1,5 @@
 # Snake game
 
-### Игра змейка.
+#### Written on js. Arrows are supported when playing from a computer. When playing on your phone, you can slow down the game by changing the difficulty.
 
-#### Написана на чистом js. При игре с компьютера поддерживаются стрелочки. При игре с телефона можно замедлить игру путем изменения сложности.
-
-[ссылка на реализацию](https://slimenion.github.io/Snake-game/)
+[link to the game](https://slimenion.github.io/Snake-game/)
