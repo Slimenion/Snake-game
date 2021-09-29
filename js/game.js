@@ -56,11 +56,11 @@ function changeDifficult() {
 }
 
 function info() {
-    alert(`Игра змейка
-    на компьютере можно использовать стрелочки
-    на телефоне используйте кнопки
+    alert(`Snake game
+    you can use arrows on the computer
+    on the phone, use the buttons
     Created by Bobrgames 2021
-    Все права не защищены.`);
+    All rights not reserved.`);
 }
 
 function eatTail(head, arr) {
@@ -68,11 +68,10 @@ function eatTail(head, arr) {
         if (head.x == arr[i].x && head.y == arr[i].y) {
             clearInterval(game);
             alert(
-                `Вы проиграли съев часть себя
-            Вы набрали: ` +
+                `You lost by eating a piece of yourself
+            Your score: ` +
                     score +
-                    `
-            Чтобы попробовать снова обновите страницу`
+                    `Refresh the page to try again`
             );
         }
     }
@@ -151,11 +150,11 @@ function drawGame() {
     ) {
         clearInterval(game);
         alert(
-            `Вы проиграли вовремя не увернувшись от стены
-        Вы набрали: ` +
+            `You lost in time without dodging the wall
+        Your score: ` +
                 score +
                 `
-        Чтобы попробовать снова обновите страницу`
+                Refresh the page to try again`
         );
     }
 
